@@ -1,0 +1,51 @@
+.chip, .pending, .approved, .rejected {
+  border-radius: 5px;
+  padding: 4px 8px;
+  width: fit-content;
+  color: #fff;
+}
+
+.rejected {
+  background-color: #f64e60;
+}
+
+.approved {
+  background-color: #0bb7af;
+}
+
+.pending {
+  background-color: #2962ff;
+}
+
+.chat-item {
+  display: flex;
+  gap: 8px;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.avatar img {
+  width: 50px;
+}
+
+.chat-item-info {
+  display: grid;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e2a35;
+}
+
+.message {
+  font-weight: 400;
+  font-size: 16px;
+  color: #1e2a35;
+}
+
+/*# sourceMappingURL=style.css.map */

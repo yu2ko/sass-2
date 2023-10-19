@@ -1,0 +1,59 @@
+@use "../../lib/service.scss";
+@use "../../lib/varibles.scss";
+
+// кольори типів фінансів
+$balance-color: #cef1ef;
+$ref-earning-color: #fcdbdf;
+$sales-color: #fbecd2;
+$earning-color: #cee0ff;
+
+// =============================================================
+
+$finance-colors: ($balance-color, $ref-earning-color, $sales-color, $earning-color);
+$finance-class: ("balance", "ref-earning", "sales", "earnings");
+
+// використаємо цикл для того щоб створити стилі для класів назви яких ми зберігаємо в масиві finance-class
+@for $i from 1 through 4 {
+    // отримамуємо одне із значень масиву по його індексу
+    .#{nth($finance-class, $i)} {
+        // викликаючи міксин circle з файлу service.scss створюємо круглий елемент з розміром 50px
+        @include service.circle(50);
+        // успадковуємо стилі класу .cost
+        @extend .cost;
+        // отримамуємо одне із значень масиву по його індексу
+        background-color: nth($finance-colors, $i);
+    }
+}
+
+// ==============================================================
+
+.cost-item {
+    display: flex;
+    // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+    gap: service.spacing(2);
+    align-items: center;
+}
+
+.cost {
+    border: 1px solid #dbe0e5;
+		box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cost-info {
+    // використовуючи вкладеність задаємо стилі тегу p який знаходиться в елементі з класом .cost-info
+    p {
+        font-weight: 400;
+        // використовуємо змінні записані в файлі varibles.scss
+        color: varibles.$secondary-text;
+    }
+    // використовуючи вкладеність задаємо стилі елементу з класом .price який знаходиться в елементі з класом .cost-info
+    .price {
+        font-weight: 600;
+        font-size: 24px;
+        // використовуємо змінні записані в файлі varibles.scss
+        color: varibles.$primary-text;
+    }
+
+		display: grid;
+		gap: service.spacing(1);
+}

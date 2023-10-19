@@ -1,0 +1,87 @@
+@use "../../lib/service.scss";
+@use "../../lib/varibles.scss";
+@use "../../component/chatItem/style.scss" as chatItem;
+@use "../../component/costItem/style.scss" as costItem;
+
+// ======================================================
+
+// створюємо об'єкт ключами якого будут ширини ектрана, а значення ширина яку має займати елемент
+$layout-sizes: (
+  "1200px": 80%,
+  "900px": 100%,
+);
+
+.wrapper {
+  display: grid;
+  // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+  margin: service.spacing(8) auto;
+  width: 60%;
+  // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+  gap: service.spacing(8);
+	padding: service.spacing(2);
+}
+
+// створюємо media queries для адаптивності нашого контейнера за допомогою перебору об'єкту
+@each $key, $value in $layout-sizes {
+  @media only screen and (max-width: $key) {
+    .wrapper {
+      width: $value;
+    }
+  }
+}
+
+// =========================================================
+
+.container {
+  background-color: #fff;
+  display: grid;
+  // викликаючи функцію spacing з файлу scss задаємо відступи нашому контейнеру
+  padding: service.spacing(4) service.spacing(8);
+  border-radius: 5px;
+}
+
+.title {
+  // використовуючи вкладеність задаємо стилі тегу h3 який знаходиться в елементі з класом .title
+  h3 {
+    font-weight: 600;
+    font-size: 18px;
+    // використовуємо змінні записані в файлі varibles.scss
+    color: varibles.$primary-text;
+  }
+  // використовуючи вкладеність задаємо стилі тегу p який знаходиться в елементі з класом .title
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    // використовуємо змінні записані в файлі varibles.scss
+    color: varibles.$secondary-text;
+  }
+  // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+  margin-bottom: service.spacing(6);
+	display: grid;
+	gap: service.spacing(1);
+}
+
+.divider {
+  height: 1px;
+  width: 90%;
+  background-color: #dee2e6;
+}
+
+.costs-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chats {
+  display: grid;
+  // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+  gap: service.spacing(4);
+}
+
+@media all and (width < 800px) {
+	.costs-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: service.spacing(4);
+	}
+}

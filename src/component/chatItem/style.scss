@@ -1,0 +1,76 @@
+@use "../../lib/service.scss";
+@use "../../lib/varibles.scss";
+
+// кольори статусів повідомлені
+$pending-color: #2962ff;
+$approved-color: #0bb7af;
+$rejected-color: #f64e60;
+
+// ========================================================
+
+// створюємо масив масивів в якому зберігаються назви класів та кольори chip елементів
+$chip-styles: ("rejected" $rejected-color, "approved" $approved-color, "pending" $pending-color);
+
+.chip {
+    border-radius: 5px;
+    // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+    padding: service.spacing(1) service.spacing(2);
+    width: fit-content;
+    color: #fff;
+}
+
+// за допомогою each перебераемо наш масив масивів та задаємо стилі для chip елементів
+@each $class, $color in $chip-styles {
+    .#{$class} {
+        // успадковуємо стилі класу .chip
+        @extend .chip;
+        // використовуємо змінні
+        background-color: $color;
+    }
+}
+
+// ========================================================
+
+.chat-item {
+    display: flex;
+    // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+    gap: service.spacing(2);
+}
+
+.avatar {
+    // викликаючи міксин circle з файлу service.scss створюємо круглий елемент з розміром 50px
+    @include service.circle(50);
+
+		img {
+			width: 50px;
+		}
+}
+
+.chat-item-info {
+    display: grid;
+    // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру
+    gap: service.spacing(2);
+}
+
+.name {
+    font-weight: 600;
+    font-size: 16px;
+
+    // ==================================================
+
+    // перевіримо чи є в нас змінна primary-text, якщо немає задамо чорний колір тексту
+    @if varibles.$primary-text {
+        color: varibles.$primary-text;
+    } @else {
+        color: black;
+    }
+
+    // ====================================================
+}
+
+.message {
+    font-weight: 400;
+    font-size: 16px;
+    // використовуємо змінні
+    color: varibles.$primary-text;
+}
