@@ -11,6 +11,22 @@ $layout-sizes: (
   "900px": 100%,
 );
 
+// ========================
+// lessons28:
+$screenSize: (
+	pc: 1300px,
+	laptop: 1000px,
+	tablet: 800px,
+	mobile: 600px
+);
+
+@media all and (width < map-get($screenSize, mobile)) {
+	body {
+	background: red;
+	}
+}
+// ========================
+
 .wrapper {
   display: grid;
   // викликаючи функцію spacing з файлу service.scss задаємо відступи нашому контейнеру

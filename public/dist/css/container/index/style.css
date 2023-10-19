@@ -76,6 +76,34 @@
   background-color: #cee0ff;
 }
 
+.balance {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #cef1ef;
+}
+
+.ref-earning {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #fcdbdf;
+}
+
+.sales {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #fbecd2;
+}
+
+.earnings {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #cee0ff;
+}
+
 .cost-item {
   display: flex;
   gap: 8px;
@@ -101,6 +129,11 @@
   color: #1e2a35;
 }
 
+@media all and (width < 600px) {
+  body {
+    background: red;
+  }
+}
 .wrapper {
   display: grid;
   margin: 32px auto;
